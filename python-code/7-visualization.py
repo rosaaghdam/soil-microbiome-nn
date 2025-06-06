@@ -1417,7 +1417,7 @@ tableScab=REE[REE['response']=='Scabpit']
 # In[60]:
 
 
-REE.to_csv('/Users/rosa/Desktop/file1.csv')
+REE.to_csv('file1.csv')
 
 
 # In[51]:
