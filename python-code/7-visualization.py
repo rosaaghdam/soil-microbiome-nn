@@ -1412,17 +1412,6 @@ REE[REE['response']=='Scabpit']
 REE=pd.concat([Result,Result2],axis=0)
 #For Scabpit
 tableScab=REE[REE['response']=='Scabpit']
-
-
-# In[60]:
-
-
-REE.to_csv('file1.csv')
-
-
-# In[51]:
-
-
 tableScab_2=tableScab[['L','NM','Aug','wF1-score']]
 data_x = tableScab_2.drop('wF1-score', axis=1)
 data_y = tableScab_2['wF1-score']
@@ -1431,30 +1420,13 @@ dtree = DecisionTreeRegressor(max_depth=4)
 dtree.fit(data_x_encoded , data_y)
 
 
-# In[52]:
-
-
 fig = plt.figure(figsize=((20,10)))
 dot_data = tree.export_graphviz(dtree, out_file=None,impurity=False, 
                                 feature_names=data_x_encoded.columns, label='root', 
                                 filled=True,leaves_parallel=True, proportion=True,rotate=False,rounded=True,special_characters=True,precision=3)  
 
 
-# In[53]:
-
-
-dot_data
-#0.5replaceby0
-#&le;replaceby=
-
-
-# In[54]:
-
-
 dot_data='digraph Tree {\nnode [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;\ngraph [ranksep=equally, splines=polyline] ;\nedge [fontname="helvetica"] ;\n0 [label=<Aug = 0<br/>samples = 100.0%<br/>value = 0.775>, fillcolor="#eb9c64"] ;\n1 [label=<NM_13 = 0<br/>66.7%<br/>0.737>, fillcolor="#eca571"] ;\n0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;\n2 [label=<NM_3 = 0<br/>63.3%<br/>0.747>, fillcolor="#eca26e"] ;\n1 -> 2 ;\n3 [label=<NM_14 = 0<br/>60.0%<br/>0.758>, fillcolor="#eba06a"] ;\n2 -> 3 ;\n4 [label=<56.7%<br/>0.77>, fillcolor="#eb9d66"] ;\n3 -> 4 ;\n5 [label=<3.3%<br/>057>, fillcolor="#f5cdb1"] ;\n3 -> 5 ;\n6 [label=<L_Order = 0<br/>3.3%<br/>051>, fillcolor="#f5cfb3"] ;\n2 -> 6 ;\n7 [label=<2.5%<br/>0.623>, fillcolor="#f2be9a"] ;\n6 -> 7 ;\n8 [label=<0.8%<br/>0.336>, fillcolor="#ffffff"] ;\n6 -> 8 ;\n9 [label=<L_Order = 0<br/>3.3%<br/>046>, fillcolor="#f5d0b5"] ;\n1 -> 9 ;\n10 [label=<L_Family = 0<br/>2.5%<br/>0.615>, fillcolor="#f2c09c"] ;\n9 -> 10 ;\n11 [label=<1.7%<br/>0.755>, fillcolor="#eca16b"] ;\n10 -> 11 ;\n12 [label=<0.8%<br/>0.336>, fillcolor="#ffffff"] ;\n10 -> 12 ;\n13 [label=<0.8%<br/>0.336>, fillcolor="#ffffff"] ;\n9 -> 13 ;\n14 [label=<L_Phylum = 0<br/>33.3%<br/>0.852>, fillcolor="#e78b49"] ;\n0 -> 14 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;\n15 [label=<NM_10 = 0<br/>16.7%<br/>0.884>, fillcolor="#e6843d"] ;\n14 -> 15 ;\n16 [label=<NM_18 = 0<br/>15.8%<br/>0.89>, fillcolor="#e5823b"] ;\n15 -> 16 ;\n17 [label=<15.0%<br/>0.896>, fillcolor="#e58139"] ;\n16 -> 17 ;\n18 [label=<0.8%<br/>0.785>, fillcolor="#ea9a60"] ;\n16 -> 18 ;\n19 [label=<0.8%<br/>0.765>, fillcolor="#eb9f67"] ;\n15 -> 19 ;\n20 [label=<NM_18 = 0<br/>16.7%<br/>0.819>, fillcolor="#e99254"] ;\n14 -> 20 ;\n21 [label=<NM_6 = 0<br/>15.8%<br/>0.828>, fillcolor="#e89051"] ;\n20 -> 21 ;\n22 [label=<15.0%<br/>0.834>, fillcolor="#e88f4f"] ;\n21 -> 22 ;\n23 [label=<0.8%<br/>0.731>, fillcolor="#eda673"] ;\n21 -> 23 ;\n24 [label=<0.8%<br/>0.652>, fillcolor="#f0b88f"] ;\n20 -> 24 ;\n{rank=same ; 0} ;\n{rank=same ; 1; 14} ;\n{rank=same ; 2; 9; 15; 20} ;\n{rank=same ; 3; 6; 10; 16; 21} ;\n{rank=same ; 4; 5; 7; 8; 11; 12; 13; 17; 18; 19; 22; 23; 24} ;\n}'
-
-
-# In[55]:
 
 
 # Draw graph
